@@ -54,7 +54,9 @@
         closeBtn.textContent = 'x';
         panel.appendChild(closeBtn);
         
-        closeBtn.addEventListener('click', () => panel.parentNode.removeChild(panel));
+        closeBtn.onclick = function(){
+          panel.parentNode.removeChild(panel);
+        }
       }
     </script>
   </body>
