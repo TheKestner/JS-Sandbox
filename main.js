@@ -1,14 +1,41 @@
-const todos = axios.get('https://jsonplaceholder.typicode.com/todos/200')
+ axios.get('https://jsonplaceholder.typicode.com/albums')
   .then((resp) => resp.data)
-  .then((data) => data)
-  .catch((err) => {
-    console.log('YOU DIDN\'T SUCCEED!');
+  .catch((err)=>{console.log(err);})
+   .then((data)=>{
+   updatePage(data)
   })
 
-const myList = document.querySelector('#myList');
-myList.textContent = todos;
+  async function updatePage(albums){
+    const myList = document.querySelector('#myList');
+    const ul = document.createElement("ul");
+       ul.setAttribute('id','list')
+       myList.appendChild(ul)
+    for(let i = 1; i < 10; i++){
+         const li = document.createElement('li')
+         ul.appendChild(li)
+        li.textContent += albums[albums.length -i].title;
+        console.log(albums)
+    }
+}
 
-console.log({todos});
+
+
+
+
+
+
+
+//const todos = axios.get('https://jsonplaceholder.typicode.com/todos/200')
+ // .then((resp) => resp.data)
+ // .then((data) => data)
+//  .catch((err) => {
+  //  console.log('YOU DIDN\'T SUCCEED!');
+//  })
+
+//const myList = document.querySelector('#myList');
+//myList.textContent = todos;
+
+//console.log({todos});
 
 
 
@@ -18,22 +45,6 @@ console.log({todos});
 //We’re trying to save data to a variable somehow that will then output it to the dom.
 //We only want the LAST 10 items in the list.
 //Stretch goals during this time: Throw items into a list with multiple fields output, make two API calls, give only the todos that are done.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
